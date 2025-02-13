@@ -1,4 +1,4 @@
-#!/bin/bash
+=#!/bin/bash
 
 input="The five boxing wizards jump quickly"
 
@@ -8,7 +8,7 @@ echo "$input" | grep -o 'bo.*ng'
 
 # Question 2: Match a word, at least four letters long, that doesn’t contain "u".
 echo "Question2"
-echo "$input" | grep -o '\b[^\suU]{4,}\b'
+echo "$input" | grep -o '\b[^\sUu]{4,}\b'
 
 # Question 3: Match three consecutive words, where the middle word begins with "b".
 echo "Question3"
@@ -20,11 +20,11 @@ grep -E '^\s*(void|int|float|char|double|struct\s+\w+)\s+[a-zA-Z_][a-zA-Z0-9_]*\
 
 # Question 5: Extract lines where a C structure is defined.
 echo "Question5"
-grep -E '^\s*struct\s+[a-zA-Z_][a-zA-Z0-9_]*' code.c
+grep -E '^\s*struct\s+[a-zA-Z_][a-zA-Z0-9_]*\s*\{' code.c
 
 # Question 6: Replace "marks" with "score" in the code.c file and print the modified lines.
 echo "Question6"
-sed 's/\bmarks\b/score/g' code.c
+sed 's/\bmarks\b/score/g' code.c | grep -E "(#include|struct Student|float score)"
 
 # Question 7: Find lines where a function is defined with at least two arguments.
 echo "Question7"
